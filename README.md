@@ -1,1 +1,1357 @@
-# egypt-safari-treasure
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Egypt Safari Tours | Egyptian Treasure</title>
+
+<style>
+
+/* =========================
+   GENERAL
+========================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Georgia, "Times New Roman", serif;
+  background:
+    radial-gradient(circle at top, #263746 0%, #101820 55%, #080d11 100%);
+  color: #f5ead4;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px 15px;
+}
+
+.container {
+  width: 100%;
+  max-width: 900px;
+  text-align: center;
+}
+
+
+/* =========================
+   LOGO
+========================= */
+
+.logo {
+  width: 230px;
+  max-width: 70vw;
+  margin: 0 auto 25px;
+  display: block;
+}
+
+
+/* =========================
+   TEXT
+========================= */
+
+.eyebrow {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #d7ad5a;
+  font-weight: bold;
+  margin-bottom: 14px;
+}
+
+h1 {
+  font-size: clamp(34px, 7vw, 58px);
+  line-height: 1.05;
+  margin-bottom: 18px;
+  color: #f8e8c7;
+}
+
+.subtitle {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 590px;
+  margin: 0 auto 30px;
+  color: #c7c3b8;
+}
+
+
+/* =========================
+   FORM
+========================= */
+
+.form-card {
+  width: 100%;
+  max-width: 430px;
+  margin: 30px auto;
+  padding: 35px 28px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,0.08),
+      rgba(255,255,255,0.025)
+    );
+  border: 1px solid rgba(215,173,90,0.35);
+  border-radius: 24px;
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.4),
+    inset 0 0 30px rgba(215,173,90,0.03);
+}
+
+.form-card h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: #f8e8c7;
+}
+
+.form-card p {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #bdb8ad;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 22px;
+}
+
+.form-card input {
+  width: 100%;
+  padding: 16px;
+  margin-bottom: 14px;
+  border: 1px solid rgba(215,173,90,0.3);
+  border-radius: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  outline: none;
+  background: rgba(255,255,255,0.08);
+  color: white;
+}
+
+.form-card input::placeholder {
+  color: #aaa69c;
+}
+
+.form-card input:focus {
+  border-color: #d7ad5a;
+  box-shadow: 0 0 0 3px rgba(215,173,90,0.1);
+}
+
+.continue-button {
+  width: 100%;
+  border: none;
+  background: linear-gradient(135deg, #d7ad5a, #a97828);
+  color: #101820;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 16px;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.continue-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(215,173,90,0.25);
+}
+
+.error-message {
+  color: #e88978;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  margin-top: 12px;
+  display: none;
+}
+
+
+/* =========================
+   TREASURE SECTION
+========================= */
+
+#treasureSection {
+  display: none;
+}
+
+.treasure-intro {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #bdb8ad;
+  font-size: 15px;
+  margin-bottom: 30px;
+}
+
+.treasure-grid {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 35px auto;
+}
+
+
+/* =========================
+   TREASURE CARD
+========================= */
+
+.treasure {
+  position: relative;
+  width: 210px;
+  min-height: 285px;
+  border-radius: 22px;
+  border: 1px solid rgba(215,173,90,0.45);
+  background:
+    linear-gradient(
+      145deg,
+      #202d36,
+      #101820
+    );
+  box-shadow:
+    0 18px 45px rgba(0,0,0,0.45),
+    inset 0 0 25px rgba(215,173,90,0.04);
+  cursor: pointer;
+  transition: 0.3s;
+  padding: 25px 15px;
+  overflow: hidden;
+}
+
+.treasure::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(215,173,90,0.14);
+  border-radius: 17px;
+  pointer-events: none;
+}
+
+.treasure:hover {
+  transform: translateY(-8px);
+  border-color: #d7ad5a;
+  box-shadow:
+    0 25px 55px rgba(0,0,0,0.55),
+    0 0 30px rgba(215,173,90,0.12);
+}
+
+.treasure-symbol {
+  font-size: 70px;
+  margin-top: 25px;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 5px 10px rgba(215,173,90,0.2));
+}
+
+.treasure-name {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: #d7ad5a;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.treasure-small {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  color: #aaa69c;
+  margin-top: 10px;
+}
+
+
+/* =========================
+   RESULT OVERLAY
+========================= */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(3,7,10,0.86);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 20;
+}
+
+.overlay.show {
+  display: flex;
+}
+
+.result-card {
+  width: 100%;
+  max-width: 520px;
+  background:
+    linear-gradient(
+      145deg,
+      #202d36,
+      #0f171d
+    );
+  border: 1px solid rgba(215,173,90,0.5);
+  border-radius: 26px;
+  padding: 38px 25px;
+  text-align: center;
+  box-shadow:
+    0 25px 80px rgba(0,0,0,0.65),
+    0 0 50px rgba(215,173,90,0.08);
+  animation: reveal 0.5s ease;
+}
+
+@keyframes reveal {
+
+  from {
+    transform: scale(0.75) translateY(30px);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+
+}
+
+.result-symbol {
+  font-size: 70px;
+  margin-bottom: 12px;
+}
+
+.result-card h2 {
+  font-size: 32px;
+  color: #f8e8c7;
+  margin-bottom: 15px;
+}
+
+.result-subtitle {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #aaa69c;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.prize {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 25px;
+  font-weight: bold;
+  color: #d7ad5a;
+  line-height: 1.35;
+  margin: 15px 0;
+}
+
+.prize-description {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #c7c3b8;
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 15px auto 20px;
+  max-width: 420px;
+}
+
+.gift-id {
+  display: inline-block;
+  background: rgba(215,173,90,0.08);
+  border: 1px solid rgba(215,173,90,0.25);
+  padding: 11px 18px;
+  border-radius: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #d7ad5a;
+  margin-bottom: 22px;
+}
+
+.whatsapp-button {
+  display: inline-block;
+  text-decoration: none;
+  background: #d7ad5a;
+  color: #101820;
+  padding: 15px 28px;
+  border-radius: 40px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  transition: 0.2s;
+}
+
+.whatsapp-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(215,173,90,0.25);
+}
+
+.close-button {
+  display: block;
+  margin: 12px auto 0;
+  border: none;
+  background: transparent;
+  color: #8f8b83;
+  cursor: pointer;
+  padding: 8px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* =========================
+   VERIFY PAGE
+========================= */
+
+#verifySection {
+  display: none;
+  width: 100%;
+  max-width: 520px;
+  margin: auto;
+}
+
+.verify-card {
+  background:
+    linear-gradient(
+      145deg,
+      #202d36,
+      #0f171d
+    );
+  border: 1px solid rgba(215,173,90,0.45);
+  border-radius: 26px;
+  padding: 40px 25px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+.verify-icon {
+  font-size: 65px;
+  margin-bottom: 15px;
+}
+
+.verify-card h2 {
+  font-size: 32px;
+  color: #f8e8c7;
+  margin-bottom: 15px;
+}
+
+.verify-card p {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #c7c3b8;
+  line-height: 1.6;
+}
+
+.verify-prize {
+  margin: 25px 0 15px;
+  padding: 18px;
+  background: rgba(215,173,90,0.08);
+  border: 1px solid rgba(215,173,90,0.2);
+  border-radius: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 21px;
+  font-weight: bold;
+  color: #d7ad5a;
+}
+
+.verify-id {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  color: #aaa69c;
+  margin-bottom: 25px;
+}
+
+.back-button {
+  display: inline-block;
+  text-decoration: none;
+  background: #d7ad5a;
+  color: #101820;
+  padding: 13px 25px;
+  border-radius: 40px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+  body {
+    padding-top: 30px;
+  }
+
+  .logo {
+    width: 190px;
+  }
+
+  .treasure-grid {
+    gap: 15px;
+  }
+
+  .treasure {
+    width: 145px;
+    min-height: 220px;
+    padding: 15px 10px;
+  }
+
+  .treasure-symbol {
+    font-size: 55px;
+    margin-top: 20px;
+  }
+
+  .treasure-name {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+  }
+
+  .treasure-small {
+    font-size: 10px;
+  }
+
+  .result-card,
+  .verify-card {
+    padding: 30px 20px;
+  }
+
+}
+
+@media (max-width: 380px) {
+
+  .treasure {
+    width: 135px;
+  }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<main class="container">
+
+  <!-- =========================
+       LOGO
+  ========================= -->
+
+  <img
+    class="logo"
+    src="985df5ca-5d4e-4b5b-8933-549038d2d8f6-removebg-preview (1).png"
+    alt="Egypt Safari Tours"
+  >
+
+
+  <!-- =========================
+       GAME SECTION
+  ========================= -->
+
+  <div id="gameSection">
+
+    <!-- NAME FORM -->
+
+    <div id="formSection">
+
+      <div class="eyebrow">
+        EGYPT SAFARI TOURS
+      </div>
+
+      <h1>
+        Choose Your Egyptian Treasure 🗝️
+      </h1>
+
+      <p class="subtitle">
+        A special Egyptian surprise is waiting for you.
+        Enter your name to begin your treasure hunt.
+      </p>
+
+
+      <div class="form-card">
+
+        <h2>
+          Your Treasure Awaits
+        </h2>
+
+        <p>
+          Enter your name to discover your Egyptian treasure.
+        </p>
+
+
+        <form id="nameForm">
+
+          <input
+            type="text"
+            id="name"
+            placeholder="Your Name"
+            autocomplete="name"
+            required
+          >
+
+          <button
+            type="submit"
+            class="continue-button"
+          >
+            ENTER THE TREASURE HUNT 🗝️
+          </button>
+
+          <div
+            class="error-message"
+            id="errorMessage"
+          >
+            Please enter your name.
+          </div>
+
+        </form>
+
+      </div>
+
+    </div>
+
+
+    <!-- TREASURE CHOICE -->
+
+    <div id="treasureSection">
+
+      <div class="eyebrow">
+        YOUR EGYPTIAN TREASURE
+      </div>
+
+      <h1>
+        Choose Your Treasure
+      </h1>
+
+      <p class="treasure-intro">
+        Three ancient symbols. One hidden reward.
+        <br>
+        Choose the one that calls to you. ✨
+      </p>
+
+
+      <div class="treasure-grid">
+
+
+        <!-- SUN -->
+
+        <div
+          class="treasure"
+          onclick="chooseTreasure(0)"
+        >
+
+          <div class="treasure-symbol">
+            ☀️
+          </div>
+
+          <div class="treasure-name">
+            The Sun
+          </div>
+
+          <div class="treasure-small">
+            Choose your destiny
+          </div>
+
+        </div>
+
+
+        <!-- EYE OF HORUS -->
+
+        <div
+          class="treasure"
+          onclick="chooseTreasure(1)"
+        >
+
+          <div class="treasure-symbol">
+            𓂀
+          </div>
+
+          <div class="treasure-name">
+            Eye of Horus
+          </div>
+
+          <div class="treasure-small">
+            Choose your destiny
+          </div>
+
+        </div>
+
+
+        <!-- SCARAB -->
+
+        <div
+          class="treasure"
+          onclick="chooseTreasure(2)"
+        >
+
+          <div class="treasure-symbol">
+            🪲
+          </div>
+
+          <div class="treasure-name">
+            The Scarab
+          </div>
+
+          <div class="treasure-small">
+            Choose your destiny
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================
+       VERIFY SECTION
+  ========================= -->
+
+  <div id="verifySection">
+
+    <div class="verify-card">
+
+      <div
+        class="verify-icon"
+        id="verifyIcon"
+      >
+        ✅
+      </div>
+
+      <h2 id="verifyTitle">
+        Treasure Verified
+      </h2>
+
+      <p id="verifyMessage">
+        This Egyptian treasure has been successfully verified.
+      </p>
+
+      <div
+        class="verify-prize"
+        id="verifyPrize"
+      ></div>
+
+      <div
+        class="verify-id"
+        id="verifyId"
+      ></div>
+
+      <a
+        href="./"
+        class="back-button"
+      >
+        BACK TO EGYPT SAFARI TOURS
+      </a>
+
+    </div>
+
+  </div>
+
+</main>
+
+
+<!-- =========================
+     RESULT POPUP
+========================= -->
+
+<div
+  class="overlay"
+  id="resultOverlay"
+>
+
+  <div class="result-card">
+
+    <div
+      class="result-symbol"
+      id="resultSymbol"
+    >
+      🏺
+    </div>
+
+    <h2 id="resultTitle">
+      Your Treasure Has Been Revealed!
+    </h2>
+
+    <div
+      class="result-subtitle"
+      id="resultSubtitle"
+    >
+      Congratulations!
+    </div>
+
+    <div
+      class="prize"
+      id="prizeText"
+    ></div>
+
+    <div
+      class="prize-description"
+      id="prizeDescription"
+    ></div>
+
+    <div
+      class="gift-id"
+      id="giftId"
+    ></div>
+
+    <a
+      id="whatsappButton"
+      class="whatsapp-button"
+      href="#"
+      target="_blank"
+      rel="noopener"
+    >
+      📲 CLAIM MY TREASURE
+    </a>
+
+    <button
+      class="close-button"
+      onclick="closeResult()"
+    >
+      Close
+    </button>
+
+  </div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   USER DATA
+========================= */
+
+let userName = "";
+let giftId = "";
+
+
+/* =========================
+   FORM
+========================= */
+
+const nameForm =
+  document.getElementById("nameForm");
+
+const formSection =
+  document.getElementById("formSection");
+
+const treasureSection =
+  document.getElementById("treasureSection");
+
+const errorMessage =
+  document.getElementById("errorMessage");
+
+
+nameForm.addEventListener(
+  "submit",
+  function(event) {
+
+    event.preventDefault();
+
+    userName =
+      document
+        .getElementById("name")
+        .value
+        .trim();
+
+
+    if (!userName) {
+
+      errorMessage.style.display =
+        "block";
+
+      return;
+
+    }
+
+
+    errorMessage.style.display =
+      "none";
+
+
+    formSection.style.display =
+      "none";
+
+    treasureSection.style.display =
+      "block";
+
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+
+  }
+);
+
+
+/* =========================
+   TREASURES / PRIZES
+========================= */
+
+const treasures = [
+
+  {
+    symbol: "☀️",
+
+    name: "The Sun",
+
+    prize:
+      "5% OFF Your Next Egypt Adventure",
+
+    description:
+      "Enjoy 5% OFF your next Egypt Safari Tours adventure.",
+
+    code: "SUN"
+
+  },
+
+
+  {
+    symbol: "𓂀",
+
+    name: "The Eye of Horus",
+
+    prize:
+      "FREE Egyptian Dinner",
+
+    description:
+      "Enjoy a FREE Egyptian dinner during your next Egypt adventure.",
+
+    code: "HORUS"
+
+  },
+
+
+  {
+    symbol: "🪲",
+
+    name: "The Scarab",
+
+    prize:
+      "€20 OFF Your Next Egypt Adventure",
+
+    description:
+      "Receive €20 OFF your next Egypt Safari Tours adventure.",
+
+    code: "SCARAB"
+
+  }
+
+];
+
+
+/* =========================
+   PHARAOH SECRET
+========================= */
+
+/*
+   The Pharaoh's Secret is a rare prize.
+
+   A small chance will replace the normal
+   treasure reward with the FREE TRIP prize.
+*/
+
+const PHARAOH_CHANCE = 0.08;
+
+
+/* =========================
+   CHOOSE TREASURE
+========================= */
+
+function chooseTreasure(index) {
+
+  const selected =
+    treasures[index];
+
+
+  let prize =
+    selected;
+
+
+  /*
+     Rare Pharaoh's Secret
+  */
+
+  if (
+    Math.random() <
+    PHARAOH_CHANCE
+  ) {
+
+    prize = {
+
+      symbol: "👑",
+
+      name:
+        "The Pharaoh's Secret",
+
+      prize:
+        "YOUR EGYPT ADVENTURE IS FREE! 🎉",
+
+      description:
+        "Bring 5 friends with you and book your Egypt adventure together — your own trip is FREE!",
+
+      code:
+        "PHARAOH"
+
+    };
+
+  }
+
+
+  showResult(prize);
+
+}
+
+
+/* =========================
+   CREATE GIFT ID
+========================= */
+
+function createGiftId() {
+
+  const randomPart =
+    Math.random()
+      .toString(36)
+      .substring(2, 8)
+      .toUpperCase();
+
+
+  return "EST-" + randomPart;
+
+}
+
+
+/* =========================
+   ENCODE VERIFICATION DATA
+========================= */
+
+function createVerificationURL(
+  id,
+  name,
+  prize
+) {
+
+  const data = {
+
+    id: id,
+
+    name: name,
+
+    prize: prize
+
+  };
+
+
+  const json =
+    JSON.stringify(data);
+
+
+  const encoded =
+    btoa(
+      unescape(
+        encodeURIComponent(
+          json
+        )
+      )
+    );
+
+
+  return (
+    window.location.origin +
+    window.location.pathname +
+    "?verify=" +
+    encodeURIComponent(
+      encoded
+    )
+  );
+
+}
+
+
+/* =========================
+   SHOW RESULT
+========================= */
+
+function showResult(prize) {
+
+  giftId =
+    createGiftId();
+
+
+  document.getElementById(
+    "resultSymbol"
+  ).textContent =
+    prize.symbol;
+
+
+  document.getElementById(
+    "resultTitle"
+  ).textContent =
+    "Your Treasure Has Been Revealed!";
+
+
+  document.getElementById(
+    "resultSubtitle"
+  ).textContent =
+    "Congratulations, " +
+    userName +
+    "! 🎉";
+
+
+  document.getElementById(
+    "prizeText"
+  ).textContent =
+    prize.prize;
+
+
+  document.getElementById(
+    "prizeDescription"
+  ).textContent =
+    prize.description;
+
+
+  document.getElementById(
+    "giftId"
+  ).textContent =
+    "Gift ID: " +
+    giftId;
+
+
+  /* =========================
+     VERIFICATION LINK
+  ========================= */
+
+  const verificationURL =
+    createVerificationURL(
+      giftId,
+      userName,
+      prize.prize
+    );
+
+
+  /* =========================
+     WHATSAPP
+  ========================= */
+
+  const whatsappNumber =
+    "201001610571";
+
+
+  const whatsappMessage =
+
+    "🗝️ Hi Egypt Safari Tours!" +
+
+    "\n\n" +
+
+    "I just unlocked an Egyptian Treasure! 🇪🇬" +
+
+    "\n\n" +
+
+    "Name: " +
+    userName +
+
+    "\n" +
+
+    "Treasure: " +
+    prize.name +
+
+    "\n" +
+
+    "Gift: " +
+    prize.prize +
+
+    "\n" +
+
+    "Gift ID: " +
+    giftId +
+
+    "\n\n" +
+
+    "Verify my treasure here:" +
+
+    "\n" +
+
+    verificationURL;
+
+
+  const whatsappURL =
+    "https://wa.me/" +
+    whatsappNumber +
+    "?text=" +
+    encodeURIComponent(
+      whatsappMessage
+    );
+
+
+  document.getElementById(
+    "whatsappButton"
+  ).href =
+    whatsappURL;
+
+
+  document.getElementById(
+    "resultOverlay"
+  ).classList.add(
+    "show"
+  );
+
+}
+
+
+/* =========================
+   CLOSE RESULT
+========================= */
+
+function closeResult() {
+
+  document.getElementById(
+    "resultOverlay"
+  ).classList.remove(
+    "show"
+  );
+
+}
+
+
+/* =========================
+   VERIFY PAGE
+========================= */
+
+function checkVerification() {
+
+  const params =
+    new URLSearchParams(
+      window.location.search
+    );
+
+
+  const encoded =
+    params.get("verify");
+
+
+  if (!encoded)
+    return;
+
+
+  try {
+
+    const decoded =
+      decodeURIComponent(
+        escape(
+          atob(encoded)
+        )
+      );
+
+
+    const data =
+      JSON.parse(
+        decoded
+      );
+
+
+    document.getElementById(
+      "gameSection"
+    ).style.display =
+      "none";
+
+
+    document.getElementById(
+      "verifySection"
+    ).style.display =
+      "block";
+
+
+    document.getElementById(
+      "verifyPrize"
+    ).textContent =
+      data.prize;
+
+
+    document.getElementById(
+      "verifyId"
+    ).textContent =
+      "Gift ID: " +
+      data.id;
+
+
+    document.getElementById(
+      "verifyMessage"
+    ).innerHTML =
+      "Congratulations, " +
+      escapeHTML(data.name) +
+      "! 🎉" +
+      "<br><br>" +
+      "Your Egyptian treasure has been verified by the Egypt Safari Tours website.";
+
+  }
+
+  catch (error) {
+
+    document.getElementById(
+      "gameSection"
+    ).style.display =
+      "none";
+
+
+    document.getElementById(
+      "verifySection"
+    ).style.display =
+      "block";
+
+
+    document.getElementById(
+      "verifyIcon"
+    ).textContent =
+      "❌";
+
+
+    document.getElementById(
+      "verifyTitle"
+    ).textContent =
+      "Invalid Treasure";
+
+
+    document.getElementById(
+      "verifyMessage"
+    ).textContent =
+      "This treasure verification link is invalid or incomplete.";
+
+
+    document.getElementById(
+      "verifyPrize"
+    ).style.display =
+      "none";
+
+
+    document.getElementById(
+      "verifyId"
+    ).style.display =
+      "none";
+
+  }
+
+}
+
+
+/* =========================
+   SAFE TEXT
+========================= */
+
+function escapeHTML(text) {
+
+  const div =
+    document.createElement(
+      "div"
+    );
+
+  div.textContent =
+    text;
+
+  return div.innerHTML;
+
+}
+
+
+/* =========================
+   START
+========================= */
+
+checkVerification();
+
+</script>
+
+</body>
+</html>
