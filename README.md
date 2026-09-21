@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -889,10 +890,10 @@ const treasures = [
     name: "The Sun",
 
     prize:
-      "5% OFF Your Next Egypt Adventure",
+      "🚗 Free Private Airport Transfer",
 
     description:
-      "Enjoy 5% OFF your next Egypt Safari Tours adventure.",
+      "Enjoy a FREE private airport transfer during your Egypt adventure.",
 
     code: "SUN"
 
@@ -1337,8 +1338,10 @@ function escapeHTML(text) {
       "div"
     );
 
+
   div.textContent =
     text;
+
 
   return div.innerHTML;
 
@@ -1355,3 +1358,4 @@ checkVerification();
 
 </body>
 </html>
+```
