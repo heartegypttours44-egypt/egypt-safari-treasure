@@ -888,14 +888,11 @@ const treasures = [
 
     name: "The Sun",
 
-    prize:
-      "5% OFF Your Next Egypt Adventure",
+prize:
+  "🚗 Free Private Airport Transfer",
 
-    description:
-      "Enjoy 5% OFF your next Egypt Safari Tours adventure.",
-
-    code: "SUN"
-
+description:
+  "Enjoy a FREE private airport transfer during your Egypt adventure.",
   },
 
 
